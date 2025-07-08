@@ -11,11 +11,15 @@ public class Main {
             return;
         }
 
+        ExcelReader excelReader = new ExcelReader();
         Path filePath = FileValidator.validate(args);
 
         if (filePath != null) {
-            for (var value : ExcelReader.readSheet(args[0])) {
-                System.out.println(value);
+            for (var value : excelReader.readSheet(args[0])) {
+                if (PrimeChecker.isPrime(Integer.parseInt(value))){
+                    System.out.println(value);
+                }
+
             }
         }
 
